@@ -57,6 +57,8 @@ public final class Dungeon {
             battle(player, dungeon[player.getCurrX()][player.getCurrY()]
                     .getMonster(), ProjectMoria.currDungeon);
         }
+        if(player.isAlive()){
+            playerMovement(player);
     }
 
     public static boolean isNorthDirection() {
