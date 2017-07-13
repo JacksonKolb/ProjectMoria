@@ -185,4 +185,8 @@ public final class IO {
         System.out.println("You hit the " + monster.getName() +
                         " for " + damage + " damage.");
     }
+    
+       public static void playerDeathMessage(){
+        System.out.println("YOU DIED.");
+    }
 }
