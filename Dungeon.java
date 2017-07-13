@@ -57,7 +57,7 @@ public final class Dungeon {
             battle(player, dungeon[player.getCurrX()][player.getCurrY()]
                     .getMonster(), ProjectMoria.currDungeon);
         }
-        if(player.isAlive()){
+        while(player.isAlive()){
             playerMovement(player);
     }
 
