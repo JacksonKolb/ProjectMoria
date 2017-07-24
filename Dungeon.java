@@ -29,11 +29,7 @@ public final class Dungeon {
     }
 
     public boolean roomExists(int x, int y) {
-        if (ProjectMoria.currDungeon[x][y] != null) {
-            return true;
-        } else {
-            return false;
-        }
+       return ProjectMoria.currDungeon[x][y] != null;
     }
 
     public void playerMovement(Player player) {
