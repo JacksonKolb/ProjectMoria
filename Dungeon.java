@@ -29,7 +29,15 @@ public final class Dungeon {
     }
 
     public boolean roomExists(int x, int y) {
-       return ProjectMoria.currDungeon[x][y] != null;
+        return  (rowExists(x)) && (colExists(y));
+    }
+
+    public boolean rowExists(int x){
+        return  (x >= 0) && (x <= 29);
+    }
+    
+    public boolean colExists(int y){
+        return  (y >= 0) && (y <= 29);
     }
 
     public void playerMovement(Player player) {
