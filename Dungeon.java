@@ -18,8 +18,8 @@ public final class Dungeon {
 
     public static Room[][] newRandomDungeon(Player player) {
         Room[][] dungeon = new Room[30][30];
-        for (int i = 0; i < 30; i++) {
-            for (int j = 0; j < 30; j++) {
+        for (int i = 0; i < dungeon.length; i++) {
+            for (int j = 0; j < dungeon.length; j++) {
                 dungeon[i][j] = Room.newRoomInstance();
 
             }
@@ -29,7 +29,11 @@ public final class Dungeon {
     }
 
     public boolean roomExists(int x, int y) {
-        return ProjectMoria.currDungeon[x][y] != null;
+        if (ProjectMoria.currDungeon[x][y] != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void playerMovement(Player player) {
@@ -48,17 +52,18 @@ public final class Dungeon {
     public void battle(Player player, Monster monster, Room[][] dungeon) {
         IO.battleIntro(player, dungeon[player.getCurrX()][player.getCurrY()]);
         IO.battle(player, monster);
-        playerMovement(player);
     }
 
     public void dungeonLogic(Player player, Room[][] dungeon) {
-        while (player.isAlive() && dungeon[player.getCurrX()][player.getCurrY()]
-                .getMonster().isAlive()) {
-            battle(player, dungeon[player.getCurrX()][player.getCurrY()]
-                    .getMonster(), ProjectMoria.currDungeon);
+        while (player.isAlive()) {
+            if (player.isAlive() && dungeon[player.getCurrX()][player.getCurrY()]
+                    .getMonster().isAlive()) {
+                battle(player, dungeon[player.getCurrX()][player.getCurrY()]
+                        .getMonster(), ProjectMoria.currDungeon);
+            } else if (player.isAlive()) {
+                playerMovement(player);
+            }
         }
-        while(player.isAlive()){
-            playerMovement(player);
     }
 
     public static boolean isNorthDirection() {
