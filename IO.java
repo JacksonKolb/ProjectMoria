@@ -1,6 +1,7 @@
 package projectmoria;
 
 import java.io.*;
+import java.util.List;
 
 public final class IO {
 
@@ -155,19 +156,33 @@ public final class IO {
     }
 
     public static void battle(Player player, Monster monster) {
+        List<Item> inventory = player.getInventory();
         while (player.isAlive() && monster.isAlive()) {
             System.out.println("\nMonster HP: " + monster.getHitPoints()
                     + "    " + "Player HP: " + player.getHitPoints());
             System.out.println("----------------------------------");
-            System.out.print("\nAttack (a)");
+            System.out.print("\nAttack (a)   Heal (h)");
             String action = ProjectMoria.USERINPUT.nextLine();
             if (action.equals("a")) {
                 monster.defend(player);
+                if (monster.isAlive()) {
+                    player.defend(monster);
+                }
+            } else if (action.equals("h")) {
 
-            }
-            if (monster.isAlive()) {
-                player.defend(monster);
-
+                for (int i = 0; i < inventory.size(); i++) {
+                    if (!inventory.get(i).getName().equals("Potion")) {
+                        System.out.println("You've exhuasted your supply of "
+                                + "potions!");
+                        break;
+                    } else {
+                        player.heal(inventory.get(i));
+                        break;
+                    }
+                }
+                if (monster.isAlive()) {
+                    player.defend(monster);
+                }
             }
         }
         if (!player.isAlive()) {
@@ -187,6 +202,11 @@ public final class IO {
     public static void monsterHitPointsMessage(int damage, Monster monster) {
         System.out.println("You hit the " + monster.getName()
                 + " for " + damage + " damage.");
+    }
+
+    public static void heal(int hitPoints) {
+        System.out.println("You drink the potion and heal 20 points!");
+        System.out.println("Player HP: " + hitPoints);
     }
 
 }
