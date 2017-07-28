@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projectmoria;
 
-/**
- *
- * @author kolbja
- */
+
 public final class Dungeon {
 
     private static boolean northDirection = false;
     private static boolean southDirection = false;
     private static boolean westDirection = false;
     private static boolean eastDirection = false;
-
+    
     public static Room[][] newRandomDungeon(Player player) {
         Room[][] dungeon = new Room[30][30];
         for (int i = 0; i < dungeon.length; i++) {
@@ -39,7 +32,7 @@ public final class Dungeon {
     public boolean colExists(int y){
         return  (y >= 0) && (y <= 29);
     }
-
+    
     public void playerMovement(Player player) {
         northDirection = roomExists(player.getCurrX(), player.getCurrY()
                 + 1);
