@@ -155,7 +155,7 @@ public final class IO {
                 + " begins.\n");
     }
 
-    public static void battle(Player player, Monster monster) {
+   public static void battle(Player player, Monster monster) {
         List<Item> inventory = player.getInventory();
         while (player.isAlive() && monster.isAlive()) {
             System.out.println("\nMonster HP: " + monster.getHitPoints()
@@ -169,16 +169,21 @@ public final class IO {
                     player.defend(monster);
                 }
             } else if (action.equals("h")) {
-
-                for (int i = 0; i < inventory.size(); i++) {
-                    if (!inventory.get(i).getName().equals("Potion")) {
-                        System.out.println("You've exhuasted your supply of "
-                                + "potions!");
-                        break;
-                    } else {
-                        player.heal(inventory.get(i));
-                        break;
+                boolean potionExists = false;
+                if (!inventory.isEmpty()) {
+                    for (int i = 0; i < inventory.size(); i++) {
+                        potionExists = false;
+                        if (inventory.get(i).getName().equals("Potion")) {
+                            player.heal(inventory.get(i));
+                            potionExists = true;
+                            break;
+                        }
                     }
+                }
+                if (potionExists == false) {
+                    System.out.println("You've exhuasted your supply of "
+                            + "potions!");
+                    battle(player, monster);
                 }
                 if (monster.isAlive()) {
                     player.defend(monster);
@@ -193,12 +198,6 @@ public final class IO {
         }
 
     }
-
-    public static void playerHitPointsMessage(int damage, Monster monster) {
-        System.out.println("The " + monster.getName() + " hit you for "
-                + damage + " damage.");
-    }
-
     public static void monsterHitPointsMessage(int damage, Monster monster) {
         System.out.println("You hit the " + monster.getName()
                 + " for " + damage + " damage.");
