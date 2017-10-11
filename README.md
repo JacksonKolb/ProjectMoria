@@ -17,9 +17,9 @@ Project Moria is a text-based dungeon/rpg game being developed in Java by Jackso
 #### Planned additions to the game include :
 
 -More types of items
-  ..* superPotions
-  ..* critPotions
-  ..* teleportPotions
+  * superPotions
+  * critPotions
+  * teleportPotions
 
 -Inventory System to hold more items
 
