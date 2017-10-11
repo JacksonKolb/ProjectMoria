@@ -1,5 +1,5 @@
 # ProjectMoria
-Text-based Dungeon/RPG Game
+A Text-based Dungeon/RPG Game
 
 
 Project Moria is a text-based dungeon/rpg game being developed in Java by Jackson Kolb.  
@@ -8,18 +8,18 @@ Project Moria is a text-based dungeon/rpg game being developed in Java by Jackso
   Players may also use up to 3 potions to heal themselves during battles.  If they choose to heal, they may not attack during the same turn (similiar to pokemon). 
 
 
-Player Types
+#### Player Types
 
 -Warrior - Well balanced, generic warrior build. 
 
 -Duelist - Less armour than the Warrior, but higher chances for critical hits. *DUELIST CLASS HAS 8000 HP FOR ERROR TESTING*
 
-Planned additions to the game include :
+#### Planned additions to the game include :
 
 -More types of items
-  a.) superPotions
-  b.) critPotions
-  c.) teleportPotions
+  ..* superPotions
+  ..* critPotions
+  ..* teleportPotions
 
 -Inventory System to hold more items
 
