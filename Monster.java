@@ -1,16 +1,12 @@
+/* Monster Class - There are a total of 4 monsters, which are all randomly 
+* generated when a new game is selected.
+*
+*/
+
 package projectmoria;
 
 import java.util.Random;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author kolbja
- */
 public class Monster {
 
     private final String name;
@@ -23,6 +19,7 @@ public class Monster {
     private final double critChance;
     private boolean aggression;
     private static final Random rand = new Random();
+    
 
     public Monster(String name, String description, int maxHitPoints,
             int minDamage, int maxDamage, int defense, double critChance,
@@ -53,33 +50,6 @@ public class Monster {
         hitPoints = (hitPoints * defense > incomingAttack)
                 ? hitPoints - incomingAttack : 0;
         return hitPoints;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getHitPoints() {
-        return hitPoints;
-    }
-
-    public boolean isAlive() {
-        return hitPoints > 0;
-    }
-
-    public String getName() {
-        return name;
-    }
-    
-    
-    
-    @Override
-    public String toString() {
-        return name + " " + description;
-    }
-
-    public double getCritChance() {
-        return critChance;
     }
 
     public static Monster newRandomMonster() {
@@ -131,7 +101,32 @@ public class Monster {
 
     public static Monster newFeralGhoul() {
         return new Monster("Feral Ghoul", "A humaniod exposed to radiation, so "
-                + "much that it can't distinguish friend from foe.", 
+                + "much that it can't distinguish friend from foe.",
                 40, 10, 25, 2, 8, true);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public boolean isAlive() {
+        return hitPoints > 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + description;
+    }
+
+    public double getCritChance() {
+        return critChance;
     }
 }
