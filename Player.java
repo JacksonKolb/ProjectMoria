@@ -1,4 +1,7 @@
-   
+/* Player Class - Currently, there are two players to choose from.  The duelist
+*  class has been buffed for error testing, and exploring the dungeon entirely.
+*
+*/   
     package projectmoria;
 
 
@@ -33,7 +36,7 @@
             this.critChance = critChance;
             this.currX = 14;
             this.currY = 14;
-            this.inventory = new ArrayList<>();
+            this.inventory = new ArrayList<>(10);
             Item.addPotion(3, this);
         }
 
