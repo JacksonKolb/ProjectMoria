@@ -1,3 +1,7 @@
+/* IO Class - handles all input and output for ProjectMoria, so that a transition
+ * to a GUI based game can be quick and painless.
+*/
+
 package projectmoria;
 
 import java.io.*;
@@ -111,7 +115,18 @@ public final class IO {
             ProjectMoria.mainMenu();
         }
     }
-
+    
+    public static void generalPrompts(Player player) {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("You arrive at Room [" + player.getCurrX() + "]["
+                + player.getCurrY() + "]");
+        System.out.println("You have some options: ");
+        System.out.println("Inspect the room for items(i)   ");
+    }
+    
     public static void movePlayer(Player player) {
 
         if (Dungeon.isNorthDirection() == true) {
@@ -155,7 +170,7 @@ public final class IO {
                 + " begins.\n");
     }
 
-   public static void battle(Player player, Monster monster) {
+    public static void battle(Player player, Monster monster, Room room) {
         List<Item> inventory = player.getInventory();
         while (player.isAlive() && monster.isAlive()) {
             System.out.println("\nMonster HP: " + monster.getHitPoints()
@@ -183,7 +198,7 @@ public final class IO {
                 if (potionExists == false) {
                     System.out.println("You've exhuasted your supply of "
                             + "potions!");
-                    battle(player, monster);
+                    battle(player, monster, room);
                 }
                 if (monster.isAlive()) {
                     player.defend(monster);
@@ -198,6 +213,12 @@ public final class IO {
         }
 
     }
+
+    public static void playerHitPointsMessage(int damage, Monster monster) {
+        System.out.println("The " + monster.getName() + " hit you for "
+                + damage + " damage.");
+    }
+
     public static void monsterHitPointsMessage(int damage, Monster monster) {
         System.out.println("You hit the " + monster.getName()
                 + " for " + damage + " damage.");
